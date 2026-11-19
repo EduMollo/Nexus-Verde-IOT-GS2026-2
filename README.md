@@ -11,6 +11,22 @@ Durante uma interrupção de abastecimento, o estoque cadastrado de um abrigo po
 4. Abra o [reservatório do Nexus Verde no Wokwi](https://wokwi.com/projects/481070267171094529) e inicie a simulação. O monitor serial mostra o nível inicial de 5% com o alerta ligado. Gire o potenciômetro para ultrapassar 15% e observe o alerta desligar. Para enviar a medição ao painel, clique em **Parear circuito Wokwi** no reservatório do ponto escolhido. Cole a linha gerada no monitor serial e pressione Enter. Após HTTP 204, reabra o reservatório, compare o UUID e clique em **Analisar abastecimento**. A chave de pareamento vale por 30 minutos.
 5. Para demonstrar a mudança de requisito da banca, altere `IOT_VALIDADE_SEGUNDOS` no Java e repita o teste com a medição anterior. O padrão é 900 segundos. Esta é uma convenção acadêmica configurável.
 
+**Acesso a Plataforma**
+
+**Login:** equipe@nexusverde.example
+
+**Senha:** 123456
+
+## Equipe - 2TDSPF
+
+| Integrante | RM |
+|---|---|
+| Carlos Alberto Guedes Neto | 566022 |
+| Eduardo Novaes Mollo | 561515 |
+| Luan Peixoto Marins Rocha | 562258 |
+| Mathaus Victor Souza Marcelino | 564146 |
+| Vinicius Luis Exposito Morassi | 563340 |
+
 ## Arquitetura
 
 ```mermaid
@@ -59,8 +75,6 @@ As métricas avaliam a recuperação de procedimentos em exemplos pequenos, cons
 3. Gerar a orientação e mostrar o trecho recuperado. Explicar por que o estoque cadastrado continua sob controle humano.
 4. Mostrar o agente e suas duas ferramentas, as métricas e o caso de leitura antiga. Explicar como trocar a validade e testar a adaptação.
 5. Dividir a exposição entre contexto cidadão, circuito, integração Java, agente/RAG e avaliação.
-
-Os integrantes e RMs constam em [INTEGRANTES.txt](INTEGRANTES.txt). O grupo utilizou ChatGPT/Codex em planejamento, implementação, elaboração dos testes e documentação.
 
 O arquivo `wokwi/cenario.yaml` também exercita o circuito em dois níveis, sem pareamento. Com o Wokwi CLI configurado, execute `wokwi-cli . --scenario cenario.yaml --timeout 20000` dentro de `wokwi/` após compilar. O monitor serial permite observar o nível e o LED antes de transmitir.
 
