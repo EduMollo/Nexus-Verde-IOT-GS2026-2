@@ -1,7 +1,11 @@
 # Nexus Verde · Copiloto de abastecimento
 **FIAP · Global Solution 2026/2 · Disruptive Architectures: IoT, IoB & Generative IA · 2TDSPF**
 
-Durante uma interrupção de abastecimento, o estoque cadastrado de um abrigo pode divergir da medição do reservatório. O Nexus Verde mostra à equipe as duas informações, a idade da leitura e uma orientação fundamentada em procedimentos de operação do protótipo. A equipe confere o estoque antes de registrar ajustes.
+**Acesso a Plataforma**
+
+**Login:** equipe@nexusverde.example
+
+**Senha:** 123456
 
 ## Experimentar pelo painel
 
@@ -10,12 +14,6 @@ Durante uma interrupção de abastecimento, o estoque cadastrado de um abrigo po
 3. Examine a recomendação, a identificação do motor e o trecho citado. Um erro no modelo aparece como indisponibilidade da orientação. Os valores do ponto continuam visíveis.
 4. Abra o [reservatório do Nexus Verde no Wokwi](https://wokwi.com/projects/481070267171094529) e inicie a simulação. O monitor serial mostra o nível inicial de 5% com o alerta ligado. Gire o potenciômetro para ultrapassar 15% e observe o alerta desligar. Para enviar a medição ao painel, clique em **Parear circuito Wokwi** no reservatório do ponto escolhido. Cole a linha gerada no monitor serial e pressione Enter. Após HTTP 204, reabra o reservatório, compare o UUID e clique em **Analisar abastecimento**. A chave de pareamento vale por 30 minutos.
 5. Para demonstrar a mudança de requisito da banca, altere `IOT_VALIDADE_SEGUNDOS` no Java e repita o teste com a medição anterior. O padrão é 900 segundos. Esta é uma convenção acadêmica configurável.
-
-**Acesso a Plataforma**
-
-**Login:** equipe@nexusverde.example
-
-**Senha:** 123456
 
 ## Equipe - 2TDSPF
 
