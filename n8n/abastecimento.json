@@ -1,0 +1,131 @@
+{
+  "id": "NexusAguaGS2026",
+  "name": "Nexus Verde · Copiloto de abastecimento",
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "executionTimeout": 48
+  },
+  "nodes": [
+    {
+      "id": "Leituradopainel",
+      "name": "Leitura do painel",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "abastecimento",
+        "authentication": "headerAuth",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "webhookId": "250fd72b-ccbc-49db-afca-e3977ae8f6be",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nvHeader001",
+          "name": "Painel Nexus Verde"
+        }
+      }
+    },
+    {
+      "id": "Consultarponto",
+      "name": "Consultar_ponto",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        230,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:5680/ponto",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.body }}",
+        "options": {
+          "timeout": 300000
+        }
+      }
+    },
+    {
+      "id": "Consultarprocedimentos",
+      "name": "Consultar_procedimentos",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:5680/procedimentos",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {
+          "timeout": 300000
+        }
+      }
+    },
+    {
+      "id": "Gerarorientacao",
+      "name": "Gerar orientação",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        690,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:5680/orientacao",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {
+          "timeout": 300000
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Leitura do painel": {
+      "main": [
+        [
+          {
+            "node": "Consultar_ponto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consultar_ponto": {
+      "main": [
+        [
+          {
+            "node": "Consultar_procedimentos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consultar_procedimentos": {
+      "main": [
+        [
+          {
+            "node": "Gerar orientação",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {}
+}
